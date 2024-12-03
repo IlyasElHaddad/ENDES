@@ -1,0 +1,27 @@
+from datetime import datetime
+
+def calcular_tiempo_transcurrido(entrada, salida):
+    formato = "%H:%M:%S"
+    hora_entrada = datetime.strptime(entrada, formato)
+    hora_salida = datetime.strptime(salida, formato)
+    diferencia = hora_salida - hora_entrada
+    return diferencia.total_seconds() / 3600
+
+def calcular_importe(horas):
+    if horas <= 1:
+        return 3.40
+    else:
+        return 3.40 + (horas - 1) * 1.80
+
+def main():
+    entrada = input("Hora de entrada (hh:mm:ss): ")
+    salida = input("Hora de salida (hh:mm:ss): ")
+    
+    horas = calcular_tiempo_transcurrido(entrada, salida)
+    importe = calcular_importe(horas)
+    
+    print(f"Tiempo total: {horas:.2f} horas")
+    print(f"Importe a pagar: {importe:.2f}€")
+
+if __name__ == "__main__":
+    main()
